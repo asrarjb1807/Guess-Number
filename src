@@ -1,0 +1,75 @@
+import random
+from replit import clear
+from ascii import cali
+from ascii import man
+print(cali)
+
+attempts1 = 10
+def easymode() :
+	global attempts1
+	global cnd
+	guess = int(input("Guess the number : "))
+	if guess == number :
+		print("You have guessed the right number.Hence you win!")
+		cnd = False
+
+	if guess != number :
+		attempts1 -= 1
+		if guess < (number - 10) :
+			print(f"You are too behind! Your attempts left {attempts1}, try a higher number")
+		elif guess > (number + 10) :
+			print(f"You are too far! Your attempts left {attempts1}, try a lower number")
+		elif guess < number :
+			print(f"You are close!  Your attempts left {attempts1}, try a higher number")
+		elif guess > number :
+			print(f"You are close!  Your attempts left {attempts1}, try a lower number")
+
+attempts = 5
+def hardmode() :
+	global attempts
+	global cnd
+	guess = int(input("Guess the number : "))
+	if guess == number :
+		print("You have guessed the right number.Hence you win!")
+		cnd = False
+
+	if guess != number :
+		attempts -= 1
+		if guess < (number - 10) :
+			print(f"You are too behind! You have {attempts} attempts, try a higher number")
+		elif guess > (number + 10) :
+			print(f"You are too far! You have {attempts} attempts, try a lower number")
+		elif guess < number :
+			print(f"You are close! You have {attempts} attempts, try a higher number")
+		elif guess > number :
+			print(f"You are close! You have {attempts} attempts, try a lower number")
+
+
+
+cnd2 = True
+while cnd2 :
+	print("!WELCOME TO THE GUESSING GAME!")
+	print("I'm thinking of a number between 1 to 100")
+	
+	chose = input("chose a difficulty, easy or hard : ").lower()
+	cnd = True
+	number = random.choice(range(0, 100))
+	print(number)
+
+	while cnd :
+		if chose == "easy":
+			easymode()
+			if attempts1 == 0 :
+				print("YOU LOOSE!")
+				cnd = False
+		else :
+			hardmode()
+			if attempts == 0 :
+				print("YOU LOOSE!")
+				cnd = False
+	restart = input("Want to play again 'yes' or 'no' : ").lower()
+	if restart == "no" :
+		print("Thanks for playing")
+		cnd2 = False
+	else :
+		clear()
